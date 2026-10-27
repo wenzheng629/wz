@@ -1,0 +1,23 @@
+Use the existing /workspace/wz checkout (wenzheng629/wz, main). Each cloud task is already isolated: do not create a Git worktree unless explicitly requested. Keep tracked application sources, tests, Makefiles, dependency declarations, and lockfiles unchanged during environment onboarding.
+
+ARS-Codex v3.23.1 is installed in /home/agent/.agents/skills/academic-research-suite from Imbad0202/academic-research-skills-codex commit 71528d9349bcdacfbe94111f06d9e2d82215a44d. Open a new Codex session to discover the skill, then invoke $academic-research-suite. It has one root skill and six workflow entrypoints. Installation does not require API credentials for its default prompt-based workflow. The optional external-model integrations and hooks have not been enabled. The source repository's model configuration was not installed.
+
+Verified preparation can be refreshed by running bash /workspace/.cloud-setup/install.sh. It checks the pinned Micromamba archive against conda-forge SHA-256 metadata, preserves existing skill files, and checks the skill's root router and inventory. User skill files are retained filesystem state, not a service to restart.
+
+MOOSE APPLICATION SETUP IS INCOMPLETE:
+- A dependency checkout of idaholab/moose at release 2025-09-05-release / commit 832d6f35e1f6c687880270d8bcb23156974cc031 exists at /workspace/.cloud-setup/moose.
+- Micromamba 2.9.0 exists at /workspace/.cloud-setup/bin/micromamba.
+- The current instance cannot access https://conda.software.inl.gov/public/ (proxy CONNECT 403). The required hostname was added to the configuration draft; saving that draft alone did not apply the runtime network change.
+- The application build was attempted and failed because libMesh/PETSc/WASP dependencies are absent. Its regression and unit tests have NOT run. Do not report the application ready.
+- Application Git status was clean after preparation; the pre-existing README merge markers were left unchanged.
+
+When the user has saved the network configuration, first retry a read-only HTTPS request to the official channel with a bounded timeout and TLS verification. If access works, resume the remaining setup. The release's conda/moose-dev recipe pins moose-dev 2025.04.22 (mpich); use its matching official conda dependencies, with conda-forge as needed. Keep the environment and MAMBA_ROOT_PREFIX under /workspace/.cloud-setup. Install and activate the matching dependency environment, then export MOOSE_DIR=/workspace/.cloud-setup/moose and METHOD=opt. Inspect activation-provided LIBMESH_DIR/WASP_DIR and compiler paths. These remaining dependency-installation and activation steps have not yet been validated.
+
+Required completion checks, after dependencies are available:
+1. In /workspace/wz, build with make -j4 (the instance has a 4 CPU quota and 32 GiB memory). All physics modules are disabled in the application Makefile.
+2. Run the existing ./run_tests regression suite; it contains a diffusion solve with Exodus gold-file comparison. Confirm an actual test passes.
+3. In /workspace/wz/unit, build with make -j4; from /workspace/wz run ./unit/run_tests and confirm the existing GoogleTests execute.
+4. Resolve setup failures without editing tracked repository files or disabling verification. Check git status and save the complete, tested dependency-installation and activation instructions after completion. Documentation generation is optional.
+No long-running service is required for this command-line application. Do not assume live processes survive publication.
+
+Nature Skills is installed in /home/agent/.agents/skills: 22 callable skills plus nature-shared. Source: Yuan1z0825/nature-skills commit c6ae86c742705fd968b13c79db1a8518a84089d4. Its source checkout is a dependency/install cache at /workspace/.cloud-setup/nature-skills. Refresh/verify this pinned installation using bash /workspace/.cloud-setup/install-nature.sh. This preserves differing existing files and leaves unrelated skills unchanged. Official update-codex-skills.sh --dest /home/agent/.agents/skills --check passed for all 23 directories; metadata and repository validators passed. Open a new Codex session, then invoke e.g. $nature-reader, $nature-polishing, or $nature-writing. The proposal-writer folder's callable name is $researchwrite. Keep nature-shared beside the skills that consume it. Optional Python, browser and MCP dependencies/credentials were not configured: inspect the selected workflow's requirements only when needed. No auto-update hooks or external integrations were enabled. ARS-Codex was verified unchanged; application Git status remains clean.

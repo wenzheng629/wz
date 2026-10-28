@@ -1,0 +1,2 @@
+case,evp_end,evp_t3_minus_t1,nl_total,nl_max,dt,substeps,fd_step,wall_seconds
+cycle100,0.021833765090605,0.0006825587654538997,57392.0,4.0,0.01,32,1e-08,1814.6287374279927

@@ -1,0 +1,59 @@
+{
+  "parameters": {
+    "ct": 0.0074,
+    "ce": 0.0015,
+    "m": 0.702,
+    "mf0": 2.322,
+    "nf": 0.888,
+    "mc": 1.562,
+    "alpha": 0.99,
+    "beta": 0.08,
+    "d": 1.022,
+    "gamma_dm": 3.3,
+    "gamma_den": 150.0,
+    "gamma_u": 30.0,
+    "pa": 100000.0,
+    "nu": 0.3
+  },
+  "units": "Pa; dimensionless strain",
+  "stress_convention": "compression positive; q = axial - radial >= 0",
+  "method": "midpoint stress-control; frozen left-point strain-control",
+  "initial": "p=700 kPa, q=0, all strain/history zero (reference state)",
+  "path": "sigma_r=700 kPa; initial q:0->420 kPa; cycles q:420->0->420 kPa",
+  "figure6_reproduction": false,
+  "scope": "stage 1 axisymmetric compression only",
+  "peak_first": {
+    "p": 840000.0,
+    "q": 420000.0,
+    "ev": 0.006433693117797945,
+    "es": 0.004677366876852286,
+    "evp": 0.0056308804401685,
+    "esp": 0.002937939408655134
+  },
+  "first_cycle": {
+    "cycle": 1,
+    "p": 840000.0,
+    "q": 420000.0,
+    "residual_evp": 0.0006829435203578324,
+    "residual_esp": 0.0004599306271259821,
+    "residual_ev": 0.0006829435203578324,
+    "residual_ea": 0.0006875784672452567,
+    "cumulative_evp": 0.0006829435203578324,
+    "cumulative_esp": 0.0004599306271259821,
+    "cumulative_ev": 0.0006829435203578324,
+    "cumulative_ea": 0.0006875784672452567
+  },
+  "last_cycle": {
+    "cycle": 10,
+    "p": 840000.0,
+    "q": 420000.0,
+    "residual_evp": 0.0003489247890661896,
+    "residual_esp": 0.00023498458111283638,
+    "residual_ev": 0.0003489247890661861,
+    "residual_ea": 0.00035129284413490565,
+    "cumulative_evp": 0.004825963241123429,
+    "cumulative_esp": 0.0032500612917652203,
+    "cumulative_ev": 0.0048259632411234215,
+    "cumulative_ea": 0.004858715705473036
+  }
+}
